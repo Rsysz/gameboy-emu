@@ -1,3 +1,4 @@
+#include "apu.h"
 #include "cpu.h"
 
 /* Internal function used to read bytes. */
