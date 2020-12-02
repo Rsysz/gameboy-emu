@@ -1,6 +1,7 @@
 
-#include "apu.h"
 #include "gameboy.h"
+#include "apu.h"
+#include "cpu.h"
 
 /* Tick the internal RTC by one second */
 void gb_tick_rtc(struct gb_s *gb)
