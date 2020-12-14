@@ -7,6 +7,9 @@ CFLAGS += -D ENABLE_SOUND
 CFLAGS += `sdl2-config --cflags`
 LDFLAGS += `sdl2-config --libs`
 
+# Computed-goto
+CFLAGS += -fno-gcse -fno-crossjumping
+
 # Control the build verbosity
 ifeq ("$(VERBOSE)","1")
     Q :=
