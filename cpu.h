@@ -85,7 +85,7 @@ void __gb_write(struct gb_s *gb, const uint_fast16_t addr, const uint8_t val);
 
 uint8_t __gb_execute_cb(struct gb_s *gb);
 
-void __gb_step_cpu(struct gb_s *gb);
+int __gb_step_cpu(struct gb_s *gb);
 
 #if ENABLE_LCD
 void __gb_draw_line(struct gb_s *gb);

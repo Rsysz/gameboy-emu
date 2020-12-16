@@ -54,9 +54,9 @@ $(OUT)/cpu_instrs.h: tests/cpu_instrs.gb tests/rom2h.c
 	$(Q)$(CC) -o $(OUT)/rom2h tests/rom2h.c
 	@$(OUT)/rom2h
 
-$(OUT)/bench: $(OUT)/cpu_instrs.h prof.h bench.c gameboy.h
+$(OUT)/bench: $(OUT)/cpu_instrs.h prof.h bench.c gameboy.h cpu.c
 	$(VECHO) "  CC+LD\t$@\n"
-	$(Q)$(CC) -o $@ bench.c build/gameboy.o build/cpu.o build/apu.o
+	$(Q)$(CC) -o $@ bench.c build/gameboy.o build/cpu.o build/apu.o lib/*.c
 
 # Download Game Boy ROMs with full source
 download_rom:

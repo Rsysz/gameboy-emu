@@ -130,9 +130,9 @@ void gb_reset(struct gb_s *gb)
     gb->gb_reg.STAT = 0;
     gb->gb_reg.LY = 0;
 
-    __gb_write(gb, 0xFF47, 0xFC); /* BGP */
-    __gb_write(gb, 0xFF48, 0xFF); /* OBJP0 */
-    __gb_write(gb, 0xFF49, 0x0F); /* OBJP1 */
+    //__gb_write(gb, 0xFF47, 0xFC); /* BGP */
+    //__gb_write(gb, 0xFF48, 0xFF); /* OBJP0 */
+    //__gb_write(gb, 0xFF49, 0x0F); /* OBJP1 */
     gb->gb_reg.WY = 0x00;
     gb->gb_reg.WX = 0x00;
     gb->gb_reg.IE = 0x00;
@@ -194,6 +194,7 @@ gb_init_error_t gb_init(
     gb->gb_serial_rx = NULL;
 
     /* Check valid ROM using checksum value. */
+    /*
     {
         uint8_t x = 0;
 
@@ -203,8 +204,9 @@ gb_init_error_t gb_init(
         if (x != gb->gb_rom_read(gb, ROM_HEADER_CHECKSUM_LOC))
             return GB_INIT_INVALID_CHECKSUM;
     }
-
+    */
     /* Check if cartridge type is supported, and set MBC type. */
+    /*
     {
         const uint8_t mbc_value = gb->gb_rom_read(gb, mbc_location);
 
@@ -216,7 +218,7 @@ gb_init_error_t gb_init(
     gb->cart_ram = cart_ram[gb->gb_rom_read(gb, mbc_location)];
     gb->num_rom_banks = num_rom_banks[gb->gb_rom_read(gb, bank_count_location)];
     gb->num_ram_banks = num_ram_banks[gb->gb_rom_read(gb, ram_size_location)];
-
+    */
     gb->display.lcd_draw_line = NULL;
 
     gb_reset(gb);
