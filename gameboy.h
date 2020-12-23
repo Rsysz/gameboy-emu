@@ -1337,13 +1337,7 @@ static void __gb_draw_line(struct gb_s *gb)
 /* Internal function used to step the CPU */
 void __gb_step_cpu(struct gb_s *gb);
 
-void gb_run_frame(struct gb_s *gb)
-{
-    gb->gb_frame = 0;
-
-    while (!gb->gb_frame)
-        __gb_step_cpu(gb);
-}
+void gb_run_frame(struct gb_s *gb);
 
 /* Gets the size of the save file required for the ROM. */
 uint_fast32_t gb_get_save_size(struct gb_s *gb)
