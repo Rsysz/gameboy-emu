@@ -107,9 +107,7 @@ void gb_reset(struct gb_s *gb)
     gb->cpu_reg.hl = 0x014D;
     gb->cpu_reg.sp = 0xFFFE;
     /* TODO: Add BIOS support. */
-    gb->cpu_reg.pc = 0x0100;
-    if (gb->gb_bios_enable)
-        gb->cpu_reg.pc = 0x0000;
+    gb->cpu_reg.pc = gb->gb_bios_enable ? 0x0000 : 0x0100;
 
     gb->counter.lcd_count = 0;
     gb->counter.div_count = 0;
@@ -189,7 +187,7 @@ gb_init_error_t gb_init(
     gb->gb_cart_ram_write = gb_cart_ram_write;
     gb->gb_error = gb_error;
     gb->direct.priv = priv;
-    
+
     /* Initialize serial transfer function to NULL. If the front-end does
      * not provide serial support, it will emulate no cable connected
      * automatically.

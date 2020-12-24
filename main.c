@@ -29,9 +29,7 @@ struct priv_t {
 uint8_t gb_rom_read(struct gb_s *gb, const uint_fast32_t addr)
 {
     const struct priv_t *const p = gb->direct.priv;
-    if (gb->gb_bios_enable && addr < 256)
-        return p->bios[addr];
-    return p->rom[addr];
+    return (gb->gb_bios_enable && addr < 256) ? p->bios[addr] : p->rom[addr];
 }
 
 /* Return a byte from the cartridge RAM at the given address */
